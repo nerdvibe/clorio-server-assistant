@@ -1,0 +1,22 @@
+import { buildSchema } from "graphql";
+
+export const schema = buildSchema(`
+  type Balance {
+    total: String
+    liquid: String
+    locked: String
+  }
+
+  type Delegate {
+    publicKey: String
+  }
+
+  type Account {
+    balance: Balance
+    delegate: Delegate
+  }
+
+  type Query {
+    accountByKey(publicKey: String): Account
+  }
+`);
