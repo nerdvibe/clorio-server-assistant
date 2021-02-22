@@ -14,6 +14,7 @@ export const schema = buildSchema(`
   type Account {
     balance: Balance
     delegate: Delegate
+    nonce: Int
   }
 
   type Query {

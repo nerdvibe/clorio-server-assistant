@@ -1,6 +1,7 @@
-// TODO!
+import {feesCacheGet} from "@modules/cache";
+
 export const queries = {
   estimatedFee: () => {
-    return 100;
+    return feesCacheGet();
   },
 };

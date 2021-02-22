@@ -1,5 +1,5 @@
 import axios from "axios";
-import { tickerCache } from "../cache";
+import { tickerCacheSet } from "../cache";
 import { logger } from "@modules/log";
 
 const log = logger("TICKER_SET_TICKER");
@@ -20,7 +20,7 @@ export const setTick = async () => {
     );
     const price = tick.last;
 
-    tickerCache.set("ticker", { BTCMINA: price });
+    tickerCacheSet({ BTCMINA: price });
   } catch (e) {
     log.error("cache tick update failed", e);
   }

@@ -19,6 +19,7 @@ export const account = async ({ publicKey }) => {
             epochDelegateAccount {
               publicKey
             }
+            nonce
           }
         }
       `,
@@ -30,6 +31,7 @@ export const account = async ({ publicKey }) => {
     return {
       balance: data.account.balance,
       delegate: data.account.epochDelegateAccount,
+      nonce: data.account.nonce
     };
   } catch (e) {
     log.error(e);

@@ -1,7 +1,7 @@
-import { tickerCache } from "@modules/cache";
+import { tickerCacheGet } from "@modules/cache";
 
 export const queries = {
   ticker: () => {
-    return tickerCache.get("ticker");
+    return tickerCacheGet();
   },
 };

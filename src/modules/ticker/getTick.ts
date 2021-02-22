@@ -1,5 +1,5 @@
-import { tickerCache } from "../cache";
+import { tickerCacheGet } from "../cache";
 
 export const getTick = () => {
-  return tickerCache.get("ticker");
+  return tickerCacheGet();
 };

@@ -4,8 +4,10 @@ import { graphqlHTTP } from "express-graphql";
 import { logger } from "@modules/log";
 import { tickerCron } from "@modules/cron";
 import {minaAstronaut} from "./lib/minaAstronaut";
+import {feesCron} from "@modules/cron/fees";
 
 tickerCron.start();
+feesCron.start();
 
 const log = logger("SERVER");
 const port = process.env.SERVER_PORT;
