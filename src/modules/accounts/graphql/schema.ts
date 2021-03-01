@@ -18,6 +18,6 @@ export const schema = buildSchema(`
   }
 
   type Query {
-    accountByKey(publicKey: String): Account
+    accountByKey(publicKey: String!): Account
   }
 `);
