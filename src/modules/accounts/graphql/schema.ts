@@ -14,7 +14,7 @@ export const schema = buildSchema(`
   }
   
   type SourceReceiver {
-    publickey: String
+    publicKey: String
   }
   
   type Mempool {

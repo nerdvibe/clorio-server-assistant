@@ -47,7 +47,7 @@ export const schema = buildSchema(`
   }
   
   type SourceReceiver {
-    publickey: String
+    publicKey: String
   }
   
   type BroadcastTransaction {
@@ -63,9 +63,20 @@ export const schema = buildSchema(`
     id: String
   }
   
+  type MempoolElement {
+    id: String
+    fee: String
+    feeToken: String
+    kind: String
+    amount: String
+    nonce: String
+    source: SourceReceiver
+    receiver: SourceReceiver
+  }
+  
   type Query {
     # this query is a workaround for schema stitching with only mutations
-    uselessQuery: Boolean
+    mempool(publicKey: String!): [MempoolElement]
   }
 
   type Mutation {
