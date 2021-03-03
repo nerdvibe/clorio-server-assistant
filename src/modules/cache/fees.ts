@@ -9,7 +9,7 @@ export interface Fees {
 }
 
 const feesCache = new NodeCache();
-feesCache.set("fees", { fast: 1, average: 1 });
+feesCache.set("fees", { fast: 0, average: 0 });
 
 export const feesCacheSet = (fees: Fees) => {
     if(!fees.fast || !fees.average) {

@@ -18,7 +18,9 @@ export const fees = async ():Promise<Fees> => {
                   kind
               }
           }
-      `});
+      `,
+     fetchPolicy: "no-cache"
+    });
 
     const txInMemPool: number = data.pooledUserCommands.length;
     const fees: number[] = data.pooledUserCommands.reduce((acc, curr) => {
@@ -27,8 +29,9 @@ export const fees = async ():Promise<Fees> => {
             acc.push(+(curr.fee));
             return acc
         }
-    }, [] as number[])
-    const averageFeeNano = Big(fees.reduce((acc, curr) => {return acc + curr}, 0)).div(txInMemPool)
+        return acc
+    }, [0])
+      const averageFeeNano = !txInMemPool ? 0 : Big(fees.reduce((acc, curr) => {return acc + curr}, 0)).div(txInMemPool)
 
       return {
           fast: fromNanoToMina(Math.max(...fees)),

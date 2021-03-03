@@ -1,27 +1,33 @@
 import gql from "graphql-tag";
 import { minaNodeClient } from "../minaNodeClient";
 import { logger } from "@modules/log";
+import {SendPaymentInput, SignatureInput} from "@modules/transactions/graphql/mutations";
 
 const log = logger("GQL_PROXY_BROADCAST");
 
-// TODO PARAMS
-export const broadcastTx = async () => {
+export const broadcastTx = async (signature: SignatureInput, input: SendPaymentInput) => {
   try {
-    const response = minaNodeClient.mutate({
+    const {data} = await minaNodeClient.mutate({
       mutation: gql`
-        mutation popJob {
-          popJob {
-            id
-            type
-            param
-            status
-            progress
-            creation_date
-            expiration_date
+        mutation sendPayment($signature: SignatureInput, $input: SendPaymentInput!) {
+          sendPayment(signature: $signature, input: $input) {
+            payment {
+              id
+            } 
           }
         }
       `,
+      variables: {
+        signature,
+        input
+      }
     });
+
+    if(!data?.sendPayment?.payment?.id) {
+      throw new Error('Broadcast failed');
+    }
+
+    return data.sendPayment.payment
   } catch (e) {
     log.error(e);
   }

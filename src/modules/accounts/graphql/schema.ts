@@ -5,16 +5,34 @@ export const schema = buildSchema(`
     total: String
     liquid: String
     locked: String
+    unconfirmedTotal: String
+    liquidUnconfirmed: String
   }
 
   type Delegate {
     publicKey: String
+  }
+  
+  type SourceReceiver {
+    publickey: String
+  }
+  
+  type Mempool {
+    id: String
+    nonce: Int
+    amount: String
+    source: SourceReceiver
+    receiver: SourceReceiver
+    fee: String
   }
 
   type Account {
     balance: Balance
     delegate: Delegate
     nonce: Int
+    mempool: [Mempool]
+    unconfirmedNonce: Int
+    usableNonce: Int
   }
 
   type Query {
