@@ -10,18 +10,11 @@ const log = logger("APOLLO");
 
 export const minaNodeClient = new ApolloClient({
   link: ApolloLink.from([
-    onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors)
-        graphQLErrors.forEach(({ message, locations, path }) =>
-          log.error(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-          )
-        );
+    onError(({ networkError }) => {
       if (networkError) log.error(`[Network error]: ${networkError}`);
     }),
     new HttpLink({
       uri: process.env.MINA_NODE_GQL,
-      // credentials: 'same-origin',
       fetch: fetch,
     }),
   ]),

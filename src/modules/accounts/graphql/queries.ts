@@ -1,7 +1,12 @@
-import { account as minaNodeAccount } from "@modules/graphqlProxy";
+import {account as minaNodeAccount} from "@modules/graphqlProxy";
+import {sendGraphqlError} from "../../../graphql/util";
 
 export const queries = {
   accountByKey: async (publicKey) => {
-    return minaNodeAccount(publicKey);
+    try {
+      return await minaNodeAccount(publicKey);
+    } catch(e) {
+      sendGraphqlError(e)
+    }
   },
 };

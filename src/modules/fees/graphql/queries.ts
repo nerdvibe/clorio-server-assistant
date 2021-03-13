@@ -1,7 +1,12 @@
 import {feesCacheGet} from "@modules/cache";
+import {sendGraphqlError} from "../../../graphql/util";
 
 export const queries = {
   estimatedFee: () => {
-    return feesCacheGet();
+    try {
+      return feesCacheGet();
+    } catch(e) {
+      sendGraphqlError(e)
+    }
   },
 };

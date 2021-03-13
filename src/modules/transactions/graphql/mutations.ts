@@ -1,5 +1,9 @@
 import {broadcastTx} from "@modules/graphqlProxy";
 import {broadcastDelegation} from "@modules/graphqlProxy/lib/broadcastDelegation";
+import {sendGraphqlError} from "../../../graphql/util";
+const {
+    ApolloError,
+} = require('apollo-server');
 
 export interface SignatureInput {
     rawSignature: string;
@@ -37,11 +41,19 @@ interface BroadcastDelegation {
 }
 
 export const mutations = {
-    broadcastTransaction: ({signature, input}: BroadcastTransaction) => {
-        return broadcastTx(signature, input);
+    broadcastTransaction: async({signature, input}: BroadcastTransaction) => {
+        try {
+            return await broadcastTx(signature, input);
+        } catch(e) {
+            sendGraphqlError(e)
+        }
     },
 
-    broadcastDelegation: ({signature, input}: BroadcastDelegation) => {
-        return broadcastDelegation(signature, input);
+    broadcastDelegation: async({signature, input}: BroadcastDelegation) => {
+        try {
+            return await broadcastDelegation(signature, input);
+        } catch(e) {
+             sendGraphqlError(e)
+        }
     },
 };

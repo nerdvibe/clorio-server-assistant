@@ -1,12 +1,8 @@
 import gql from "graphql-tag";
 import { minaNodeClient } from "../minaNodeClient";
-import { logger } from "@modules/log";
 import Big from "big.js";
 
-const log = logger("GQL_PROXY_ACCOUNT");
-
 export const account = async ({ publicKey }) => {
-  try {
     const { data } = await minaNodeClient.query({
       query: gql`
         query account($publicKey: String) {
@@ -61,7 +57,4 @@ export const account = async ({ publicKey }) => {
       usableNonce,
       mempool: data.pooledUserCommands,
     };
-  } catch (e) {
-    log.error(e);
-  }
 };

@@ -8,7 +8,6 @@ import {Fees} from "@modules/cache";
 const log = logger("GQL_PROXY_FEES");
 
 export const fees = async ():Promise<Fees> => {
-  try {
     const { data } = await minaNodeClient.query({
       query: gql`
           query pooledUserCommands {
@@ -37,7 +36,4 @@ export const fees = async ():Promise<Fees> => {
           fast: fromNanoToMina(Math.max(...fees)),
           average: fromNanoToMina(averageFeeNano),
       };
-  } catch (e) {
-      log.error(e);
-  }
 };
