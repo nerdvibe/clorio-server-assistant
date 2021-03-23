@@ -11,7 +11,7 @@ const tickerCache = new NodeCache();
 tickerCache.set("ticker", { BTCMINA: 1 });
 
 export const tickerCacheSet = (tick: Ticker) => {
-    if(!tick.BTCMINA) {
+    if(!tick.BTCMINA && tick.BTCMINA !== null ) {
         log.error('cannot save the tick')
     }
     tickerCache.set("ticker", tick)

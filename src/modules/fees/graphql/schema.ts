@@ -6,8 +6,19 @@ export const schema = buildSchema(`
     fast: Float
     average: Float
   }
+    
+  type SnarkFees {
+    maxFee: Float
+    minFee: Float
+    average: Float
+  }
+    
+  type EstimatedFees {
+    txFees: Fees
+    snarkFees: SnarkFees
+  }
 
   type Query {
-    estimatedFee: Fees
+    estimatedFee: EstimatedFees
   }
 `);

@@ -11,6 +11,7 @@ export const schema = buildSchema(`
 
   type Delegate {
     publicKey: String
+    name: String
   }
   
   type SourceReceiver {

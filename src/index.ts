@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import "module-alias/register";
+import "./db";
 import "./server";
 
 import { logger } from "@modules/log";

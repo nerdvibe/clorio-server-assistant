@@ -28,8 +28,10 @@
     "express-graphql": "^0.11.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
+    "knex": "^0.95.2",
     "module-alias": "^2.2.2",
     "node-cache": "^5.1.2",
+    "pg": "^8.5.1",
     "typescript": "^4.0.5",
     "winston": "^3.3.3"
   },
