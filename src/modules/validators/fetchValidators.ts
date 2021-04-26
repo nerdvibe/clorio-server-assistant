@@ -7,8 +7,8 @@ const VALIDATORS_URL = 'https://api.staketab.com/mina/get_providers';
 const log = logger("FETCH_VALIDATORS");
 
 const fixedData = {
-    5: {fee: 5}, // Piconbello
-    25: {priority: 1} // Carbonara
+    25: { priority: 1, website: "https://mina.westake.club/", stakedSum: 198727}, // Carbonara - API returning wrong data
+    266: { fee: 100} // Coinlist - Private pool
 }
 // Count how many priority bumps are there
 const priorityOffset = Object.keys(fixedData).reduce((acc, curr) => fixedData[curr].priority ? acc + 1 : acc, 0)
@@ -60,6 +60,8 @@ export const fetchValidators = async () => {
     }))
 
     await validatorsCacheSet(validatorsNameValue);
+
+    log.info('validators inserted')
 
     return
 }

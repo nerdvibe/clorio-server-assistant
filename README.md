@@ -1,25 +1,12 @@
-# Mina Hub Server Assistant
+# Clorio Server Assistant
 
 <p align="center"> 
   <img src="https://mina.tools/assets/minahub-server.png" height="200">
 </p>
 
-⚠️ This is an early private stage of MinaHub, is not ready for usage.
-
 ## Getting started
 
-Since this is a WIP, this will not work out of the box. MinaHub client doesn't connect directly to Mina-Hub-Server-Asistant, but instead uses Hasura as proxy.
-Therefore you will need Hasura and set up the MHSA (this repo) as remote schema.
-
-Hasura acts as central GraphQL API endpoint for the clients, as GQL schema for Mina Archive and uses MHSA as remote schema for the custom business logic and integration with the Mina blockchain.
-
-### Set up a mina archive node
-
-[https://minaprotocol.com/docs/archive-node](https://minaprotocol.com/docs/archive-node)
-
-### Configure Hasura
-
-`TODO instructions`
+Clorio is a full-stack wallet for Mina Protocol. It is built with Typescript, communicates with the backend with the GraphQL API, and is offered in two versions. Hosted wallet on https://clor.io and the desktop builds compiled by Electron.
 
 ### Install the dependencies
 
@@ -29,14 +16,33 @@ Hasura acts as central GraphQL API endpoint for the clients, as GQL schema for M
 
 `yarn start`
 
-## Todos:
+## Hosted wallet
 
-- License (License, disclaimers, non-affiliation with (O1)Labs)
-- Improve the queries/mutations (connect the pieces together)
-- Testing
+You can try the hosted version of Clorio wallet on [mainnet](https://mainnet.clor.io) or [devnet](https://devnet.clor.io).
 
-# Disclaimer
+## User docs
 
-By using this software you accept the terms and conditions. This software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+User docs are available on https://docs.clor.io/
 
-MinaHub is not affiliated with [TODO]
+## Support
+
+You can get support on [Discord](https://discord.gg/XakPRT3SCY). For security disclosures please get in touch privately on Discord with carbonara#5880.
+
+## Bugs & Issues
+
+Please open an issue on Github.
+
+## How to support us
+
+We are a small team developing blockchain ecosystems. If you are enjoying Clorio wallet, you can support us here: https://docs.clor.io/support-us
+
+<a href="https://www.buymeacoffee.com/carbonara" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
+## License
+
+Copyright 2021 Carbonara.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. Furthermore you may not remove attributions of WeStake.Club or Carbonara.
+
+~Clorio is a wallet offered by Carbonara from [WeStake.Club⚡️](https://mina.westake.club) and is not developed by O(1)Labs.

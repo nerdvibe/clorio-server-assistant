@@ -4,6 +4,7 @@ import { graphqlHTTP } from "express-graphql";
 import { logger } from "@modules/log";
 import { tickerCron, feesCron, heightCron } from "@modules/cron";
 import {minaAstronaut} from "./lib/minaAstronaut";
+import {fetchValidators} from "@modules/validators/fetchValidators";
 
 tickerCron.start();
 feesCron.start();
@@ -30,6 +31,10 @@ const setMiddleware = () => {
 };
 
 setMiddleware();
+
+(async() => {
+    await fetchValidators()
+})()
 
 app.listen(port, async () => {
   log.info(`Running a GraphQL API server at http://localhost:${port}`);

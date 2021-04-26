@@ -40,9 +40,8 @@ export const account = async ({ publicKey }) => {
     const unconfirmedNonce = mempool.length ? Math.max(...mempool.map(tx => tx.nonce)) : -1;
     const usableNonce = Math.max(nonce, unconfirmedNonce + 1);
     const unconfBalance: number = mempool.reduce((acc, curr) => {
-          // if out TX, deduct fee + amount
         if (curr.feeToken === '1' && curr.source.publicKey === publicKey) {
-        return +Big(acc).minus(Big(curr.fee).plus(curr.amount)).round(8)
+            return +Big(acc).minus(Big(curr.fee).plus(curr.amount)).round(8)
       }
       return acc
     }, data.account.balance.total as number)
