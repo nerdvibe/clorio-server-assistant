@@ -7,7 +7,7 @@ const VALIDATORS_URL = 'https://api.staketab.com/mina/get_providers';
 const log = logger("FETCH_VALIDATORS");
 
 const fixedData = {
-    25: { priority: 1, website: "https://mina.westake.club/", stakedSum: 198727}, // Carbonara - API returning wrong data
+    25: { priority: 1, website: "https://mina.westake.club/"}, // Carbonara - API returning wrong data
     266: { fee: 100} // Coinlist - Private pool
 }
 // Count how many priority bumps are there

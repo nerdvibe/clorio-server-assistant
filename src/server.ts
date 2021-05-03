@@ -2,13 +2,14 @@ import express from "express";
 import { root, graphqlSchema } from "./graphql/schema";
 import { graphqlHTTP } from "express-graphql";
 import { logger } from "@modules/log";
-import { tickerCron, feesCron, heightCron } from "@modules/cron";
+import { tickerCron, feesCron, heightCron, validatorsCron } from "@modules/cron";
 import {minaAstronaut} from "./lib/minaAstronaut";
 import {fetchValidators} from "@modules/validators/fetchValidators";
 
 tickerCron.start();
 feesCron.start();
 heightCron.start();
+validatorsCron.start();
 
 const log = logger("SERVER");
 const port = process.env.SERVER_PORT;
